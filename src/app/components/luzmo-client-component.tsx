@@ -29,9 +29,9 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
               title: true,
             },
             mode: 'donut',
-            // legend: {
-            //   position: 'bottom',
-            // },
+            legend: {
+              position: 'bottom',
+            },
           }}
           slots={[
             {
@@ -41,7 +41,7 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
                   label: {
                     en: 'Total users',
                   },
-                  column: '514d3a0b-f074-4119-9fc5-6366a626ec46', // Total users
+                  column: '<column id>', // Total users
                   set: datasetId,
                   type: 'numeric',
                   format: '.4f',
@@ -55,7 +55,7 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
                   label: {
                     en: 'Device category',
                   },
-                  column: 'c7885194-6115-4920-b05a-6f7af388e1c3', // Device category
+                  column: '<column id>', // Device category
                   set: datasetId,
                   type: 'hierarchy',
                 },
@@ -70,7 +70,7 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
                   expression: '? >= ?',
                   parameters: [
                     {
-                      column_id: 'dc23c7f3-f9dd-4880-9f57-4a53d1bd23ba', // Date
+                      column_id: '<column id>', // Date
                       dataset_id: datasetId,
                     },
                     date,
@@ -104,7 +104,7 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
                   label: {
                     en: 'Total users',
                   },
-                  column: '514d3a0b-f074-4119-9fc5-6366a626ec46', // Total users
+                  column: '<column id>', // Total users
                   set: datasetId,
                   type: 'numeric',
                   format: '.4f',
@@ -118,7 +118,7 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
                   label: {
                     en: 'Date',
                   },
-                  column: 'dc23c7f3-f9dd-4880-9f57-4a53d1bd23ba', // Date
+                  column: '<column id>', // Date
                   set: datasetId,
                   type: 'datetime',
                   level: 5,
@@ -134,7 +134,7 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
                   expression: '? >= ?',
                   parameters: [
                     {
-                      column_id: 'dc23c7f3-f9dd-4880-9f57-4a53d1bd23ba', // Date
+                      column_id: '<column id>', // Date
                       dataset_id: datasetId,
                       level: 5,
                     },
@@ -195,7 +195,7 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
                   label: {
                     en: 'Page title',
                   },
-                  column: '<column id>', // Page title
+                  column: '<<column id>>', // Page title
                   set: datasetId,
                   type: 'hierarchy',
                 },
