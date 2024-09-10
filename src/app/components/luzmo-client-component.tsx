@@ -14,141 +14,142 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
   return (
     <section className='flex flex-col gap-16 p-16'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-16'>
-        <LuzmoVizItemComponent
-          className='w-full h-80'
-          appServer={process.env.NEXT_PUBLIC_LUZMO_APP_SERVER}
-          apiHost={process.env.NEXT_PUBLIC_LUZMO_API_HOST}
-          authKey={authKey}
-          authToken={authToken}
-          type='donut-chart'
-          options={{
-            title: {
-              en: `Devices from last 7 days`,
-            },
-            display: {
-              title: true,
-            },
-            mode: 'donut',
-            legend: {
-              position: 'bottom',
-            },
-          }}
-          slots={[
-            {
-              name: 'measure',
-              content: [
-                {
-                  label: {
-                    en: 'Total users',
-                  },
-                  column: '<column id>', // Total users
-                  set: datasetId,
-                  type: 'numeric',
-                  format: '.4f',
-                },
-              ],
-            },
-            {
-              name: 'category',
-              content: [
-                {
-                  label: {
-                    en: 'Device category',
-                  },
-                  column: '<column id>', // Device category
-                  set: datasetId,
-                  type: 'hierarchy',
-                },
-              ],
-            },
-          ]}
-          filters={[
-            {
-              condition: 'or',
-              filters: [
-                {
-                  expression: '? >= ?',
-                  parameters: [
-                    {
-                      column_id: '<column id>', // Date
-                      dataset_id: datasetId,
+        <div className='w-full h-80'>
+          <LuzmoVizItemComponent
+            appServer={process.env.NEXT_PUBLIC_LUZMO_APP_SERVER}
+            apiHost={process.env.NEXT_PUBLIC_LUZMO_API_HOST}
+            authKey={authKey}
+            authToken={authToken}
+            type='donut-chart'
+            options={{
+              title: {
+                en: `Devices from last 7 days`,
+              },
+              display: {
+                title: true,
+              },
+              mode: 'donut',
+              legend: {
+                position: 'bottom',
+              },
+            }}
+            slots={[
+              {
+                name: 'measure',
+                content: [
+                  {
+                    label: {
+                      en: 'Total users',
                     },
-                    date,
-                  ],
-                },
-              ],
-            },
-          ]}
-        />
-        <LuzmoVizItemComponent
-          className='w-full h-80'
-          appServer={process.env.NEXT_PUBLIC_LUZMO_APP_SERVER}
-          apiHost={process.env.NEXT_PUBLIC_LUZMO_API_HOST}
-          authKey={authKey}
-          authToken={authToken}
-          type='line-chart'
-          options={{
-            title: {
-              en: `Site visits from last 7 days`,
-            },
-            display: {
-              title: true,
-            },
-            mode: 'line-chart',
-          }}
-          slots={[
-            {
-              name: 'measure',
-              content: [
-                {
-                  label: {
-                    en: 'Total users',
+                    column: '<column id>', // Total users
+                    set: datasetId,
+                    type: 'numeric',
+                    format: '.4f',
                   },
-                  column: '<column id>', // Total users
-                  set: datasetId,
-                  type: 'numeric',
-                  format: '.4f',
-                },
-              ],
-            },
-            {
-              name: 'x-axis',
-              content: [
-                {
-                  label: {
-                    en: 'Date',
-                  },
-                  column: '<column id>', // Date
-                  set: datasetId,
-                  type: 'datetime',
-                  level: 5,
-                },
-              ],
-            },
-          ]}
-          filters={[
-            {
-              condition: 'or',
-              filters: [
-                {
-                  expression: '? >= ?',
-                  parameters: [
-                    {
-                      column_id: '<column id>', // Date
-                      dataset_id: datasetId,
-                      level: 5,
+                ],
+              },
+              {
+                name: 'category',
+                content: [
+                  {
+                    label: {
+                      en: 'Device category',
                     },
-                    date,
-                  ],
-                },
-              ],
-            },
-          ]}
-        />
+                    column: '<column id>', // Device category
+                    set: datasetId,
+                    type: 'hierarchy',
+                  },
+                ],
+              },
+            ]}
+            filters={[
+              {
+                condition: 'or',
+                filters: [
+                  {
+                    expression: '? >= ?',
+                    parameters: [
+                      {
+                        column_id: '<column id>', // Date
+                        dataset_id: datasetId,
+                      },
+                      date,
+                    ],
+                  },
+                ],
+              },
+            ]}
+          />
+        </div>
+        <div className='w-full h-80'>
+          <LuzmoVizItemComponent
+            appServer={process.env.NEXT_PUBLIC_LUZMO_APP_SERVER}
+            apiHost={process.env.NEXT_PUBLIC_LUZMO_API_HOST}
+            authKey={authKey}
+            authToken={authToken}
+            type='line-chart'
+            options={{
+              title: {
+                en: `Site visits from last 7 days`,
+              },
+              display: {
+                title: true,
+              },
+              mode: 'grouped',
+            }}
+            slots={[
+              {
+                name: 'measure',
+                content: [
+                  {
+                    label: {
+                      en: 'Total users',
+                    },
+                    column: '<column id>', // Total users
+                    set: datasetId,
+                    type: 'numeric',
+                    format: '.4f',
+                  },
+                ],
+              },
+              {
+                name: 'x-axis',
+                content: [
+                  {
+                    label: {
+                      en: 'Date',
+                    },
+                    column: '<column id>', // Date
+                    set: datasetId,
+                    type: 'datetime',
+                    level: 5,
+                  },
+                ],
+              },
+            ]}
+            filters={[
+              {
+                condition: 'or',
+                filters: [
+                  {
+                    expression: '? >= ?',
+                    parameters: [
+                      {
+                        column_id: '<column id>', // Date
+                        dataset_id: datasetId,
+                        level: 5,
+                      },
+                      date,
+                    ],
+                  },
+                ],
+              },
+            ]}
+          />
+        </div>
       </div>
-      <div>
+      <div className='w-full h-80'>
         <LuzmoVizItemComponent
-          className='w-full h-80'
           appServer={process.env.NEXT_PUBLIC_LUZMO_APP_SERVER}
           apiHost={process.env.NEXT_PUBLIC_LUZMO_API_HOST}
           authKey={authKey}
@@ -195,7 +196,7 @@ export default function LuzmoClientComponent({ authKey, authToken, datasetId }: 
                   label: {
                     en: 'Page title',
                   },
-                  column: '<<column id>>', // Page title
+                  column: '<column id>', // Page title
                   set: datasetId,
                   type: 'hierarchy',
                 },
